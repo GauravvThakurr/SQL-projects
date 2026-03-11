@@ -31,7 +31,7 @@ GROUP BY s.customer_id
 ORDER BY SUM(m.price) DESC;
 ````
 
-#### 🔖 Setps
+#### 🔖 Steps
 - Performe **INNER JOIN** between `dannys_diner.sales` and `dannys_diner.menu` table and got `s.customer_id AS Customers_Id` and `m.price as Total_amt_customer_spend`
 - Performe Sum on `m.price` and Group the aggregated results by `s.customer_id`
 - Also add `$` to aggregated values for better readability (optional)
@@ -58,7 +58,7 @@ FROM dannys_diner.sales
 GROUP BY customer_id;
 ````
 
-#### 🔖 Setps
+#### 🔖 Steps
 - To find unique visits use  `COUNT(DISTINCT order_date)` than group by `customer_id` 
 
 #### 🎯Insights
@@ -95,7 +95,7 @@ GROUP BY customer_id,
          product_name
 ````
 
-#### 🔖 Setps 
+#### 🔖 Steps 
 - Create a Common Table Expression (CTE) called `firstcte` Within the CTE, include a new column named `first_order` which calculates the row number using the `DENSE_RANK()` window function. The data is divided into partitions based on `customer_id` and the rows within each partition are ordered by `order_date`
 - In outer Query select required columns and then apply where clause to filter `first_order = 1` which will only select first orders
 - Group them all
@@ -137,7 +137,7 @@ join dannys_diner.menu m on m.product_id = o.product_id
 order by o.customer_id
 ````
 
-#### 🔖 Setps
+#### 🔖 Steps
 - First we find most ordered product, than limited it to 1 row
 - Using subquery and CTE we found how many times each customer ordered most ordered product
 - 
@@ -168,7 +168,7 @@ where r.rn = 1
 order by r.no_order desc
 ````
 
-#### 🔖 Setps
+#### 🔖 Steps
 - We found which product was orderd how many times using `dense_rank()` then enclosed in cte named `rankedorder`
 - In main query we join `Menu` table for to pull names of product and used `r.rn = 1` to pull only the top order from each customer
   
